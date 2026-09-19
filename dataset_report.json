@@ -1,0 +1,131 @@
+{
+  "audit_metadata": {
+    "project": "GaitGuard AI",
+    "phase": "Phase 0 - Dataset Audit",
+    "dataset_name": "Cattle Lameness Video Dataset (YouTube derived)",
+    "source_location": "C:\\Users\\Lenovo\\Downloads\\CattleLameness-main\\CattleLameness-main\\Data",
+    "timestamp": "2026-09-20"
+  },
+  "core_counts": {
+    "1_total_videos": 50,
+    "2_total_samples": 50,
+    "3_num_normal_samples": 25,
+    "4_num_lame_samples": 25,
+    "5_existing_split": "No fixed directory split. All 50 clips exist in raw class folders (Data/Lame, Data/Normal).",
+    "18_class_imbalance": {
+      "ratio": "1.0 : 1.0",
+      "status": "Perfectly balanced (50% Lame, 50% Normal)",
+      "lame_percentage": 50.0,
+      "normal_percentage": 50.0
+    }
+  },
+  "video_distributions": {
+    "6_duration_seconds": {
+      "min": 1.35,
+      "max": 12.28,
+      "mean": 5.642799999999999,
+      "median": 5.225,
+      "std": 1.9824845677140819,
+      "q25": 4.5024999999999995,
+      "q75": 6.5775,
+      "by_class": {
+        "LAME": {
+          "mean": 5.934399999999999,
+          "std": 1.5848556190812253,
+          "min": 3.61,
+          "max": 10.13
+        },
+        "NORMAL": {
+          "mean": 5.3512,
+          "std": 2.3098346261150384,
+          "min": 1.35,
+          "max": 12.28
+        }
+      }
+    },
+    "7_resolution_distribution": {
+      "resolutions_found": {
+        "500x500": 50
+      },
+      "aspect_ratios": {
+        "500:500": 50
+      },
+      "uniform_resolution": true,
+      "standard_resolution": "500x500 (1:1 square crop)"
+    },
+    "8_fps_distribution": {
+      "min": 25.0,
+      "max": 60.0,
+      "mean": 36.086999999999996,
+      "std": 12.892406600754713,
+      "unique_fps": [
+        29.97,
+        29.92,
+        60.0,
+        59.94,
+        30.0,
+        29.5,
+        25.0,
+        29.17,
+        29.58,
+        29.0,
+        28.7
+      ],
+      "fps_counts": {
+        "30.0": 16,
+        "60.0": 9,
+        "29.97": 8,
+        "29.92": 4,
+        "25.0": 4,
+        "59.94": 2,
+        "29.5": 2,
+        "29.58": 2,
+        "29.17": 1,
+        "29.0": 1,
+        "28.7": 1
+      }
+    },
+    "frame_counts": {
+      "min": 79,
+      "max": 479,
+      "mean": 199.0,
+      "median": 159.0,
+      "total_frames_audited": 9950
+    }
+  },
+  "file_and_annotation_specs": {
+    "9_file_formats": {
+      ".mp4": 50
+    },
+    "codecs": {
+      "h264": 50
+    },
+    "10_label_format": "Directory-level binary classification (Data/Lame vs Data/Normal).",
+    "11_label_granularity": "Per-video / per-clip level. No per-frame bounding boxes or gait keypoint coordinates.",
+    "17_corrupted_files_count": 0,
+    "corrupted_files_list": []
+  },
+  "identity_and_leakage_assessment": {
+    "12_cattle_ids_available": false,
+    "12_details": "Individual cattle IDs are not provided in the filenames, CSVs, or folder structure.",
+    "13_same_cow_multiple_videos": true,
+    "13_details": "Original paper README documents 50 video clips featuring 42 individual cattle. By pigeonhole principle, at least 8 clips share cattle identities with other clips.",
+    "14_cow_across_proposed_splits_risk": "High under naive random video splitting. Without explicit cow IDs, random splitting risks placing the same cow in both train and test splits.",
+    "15_duplicate_or_near_duplicate_videos": {
+      "exact_hash_duplicates": 0,
+      "near_duplicate_clips": 0,
+      "max_pairwise_cosine_similarity": 0.9468,
+      "note": "All 50 clips represent distinct video cuts or different sequences."
+    },
+    "16_frame_leakage_across_splits_risk": "Preventable if splitting is done strictly at the VIDEO level (entire video in train or val/test). If frames were shuffled independently, catastrophic leakage would occur.",
+    "19_number_of_unique_cattle": 42,
+    "19_identifiability_limitation": "CRITICAL LIMITATION: Specific cow-to-video mapping is not provided by dataset authors. Animal identity cannot be deterministically separated at split time, posing a mild identity-leakage risk of ~8 clips.",
+    "20_unusual_characteristics": [
+      "All videos are pre-cropped to square 500x500 pixels.",
+      "Variable framerate spanning 25 fps to 60 fps (YouTube Shorts vs standard YouTube uploads).",
+      "Variable durations (1.35s to 12.28s) require uniform temporal sampling (e.g. fixed 16 frames uniformly sampled along timeline).",
+      "Heterogeneous backgrounds: indoor milking parlors/concrete chutes and outdoor grass/mud pastures.",
+      "Diverse camera angles: lateral (side-view), oblique, and semi-frontal."
+    ]
+  }
+}

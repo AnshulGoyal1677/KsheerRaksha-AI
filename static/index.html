@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GaitGuard AI — Precision Cattle Lameness Screening</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="brand">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+          </svg>
+        </div>
+        <div>
+          <h1>GaitGuard <span class="accent-text">AI</span></h1>
+          <p class="tagline">Automated Cattle Locomotion & Early Lameness Screening</p>
+        </div>
+      </div>
+      <div class="header-badges">
+        <span class="badge badge-pulse"><span class="pulse-dot"></span> Edge Model Active</span>
+        <span class="badge badge-outline">ResNet-18 + BiGRU</span>
+        <span class="badge badge-hardware">RTX 3050 (CUDA 12.6)</span>
+        <span class="badge badge-planned" title="Modular architectural extension planned for future validated udder datasets">Mastitis module — planned</span>
+      </div>
+    </header>
+
+    <!-- Ethical Disclaimer Alert Banner -->
+    <div class="alert-banner">
+      <div class="alert-icon">⚠️</div>
+      <div class="alert-content">
+        <strong>VETERINARY ADVISORY & CLASSIFICATION NOTICE:</strong>
+        This system generates an <em>AI screening result</em>, not a veterinary diagnosis. It is engineered for early herd management decision support to flag cows exhibiting locomotion anomalies before clinical impairment worsens.
+      </div>
+    </div>
+
+    <!-- Main Grid -->
+    <main class="main-grid">
+      <!-- Left Column: Video Input & Playback -->
+      <section class="card input-card">
+        <div class="card-header">
+          <h2>1. Video Capture & Ingestion</h2>
+          <span class="card-step">Step 1 of 2</span>
+        </div>
+
+        <!-- Preset Test Samples (Quick demo for judges) -->
+        <div class="preset-section">
+          <label class="section-label">Quick-Load Evaluation Samples (Held-Out Test Set):</label>
+          <div class="preset-buttons" id="presetContainer">
+            <!-- Populated via JS -->
+            <button class="preset-btn" data-sample="normal1">Loading samples...</button>
+          </div>
+        </div>
+
+        <div class="divider"><span>OR UPLOAD CUSTOM VIDEO</span></div>
+
+        <!-- Dropzone -->
+        <div class="dropzone" id="dropzone">
+          <input type="file" id="videoFileInput" accept="video/mp4,video/x-m4v,video/*" hidden>
+          <div class="dropzone-content">
+            <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+            </svg>
+            <p class="drop-text">Drag & drop cattle walking video here</p>
+            <span class="drop-subtext">Supports MP4, AVI, MOV (500x500 square or parlor camera feeds)</span>
+            <button class="btn btn-outline" id="browseBtn" type="button">Browse Files</button>
+          </div>
+        </div>
+
+        <!-- Video Preview Container -->
+        <div class="video-preview-wrapper" id="videoPreviewWrapper" style="display: none;">
+          <div class="preview-header">
+            <span id="videoFilename">video_preview.mp4</span>
+            <span class="badge" id="videoDurationBadge">0.0s</span>
+          </div>
+          <div class="video-container">
+            <video id="videoPlayer" controls playsinline></video>
+            <div class="scan-overlay" id="scanOverlay" style="display: none;">
+              <div class="scan-line"></div>
+              <div class="scan-badge">SPATIO-TEMPORAL EXTRACTION (T=16)</div>
+            </div>
+          </div>
+          <button class="btn btn-primary" id="analyzeBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+            Analyze Cattle Gait & Locomotion
+          </button>
+        </div>
+      </section>
+
+      <!-- Right Column: Screening Intelligence & Results -->
+      <section class="card results-card">
+        <div class="card-header">
+          <h2>2. GaitGuard Screening Intelligence</h2>
+          <span class="card-step">Step 2 of 2</span>
+        </div>
+
+        <!-- Initial Placeholder State -->
+        <div class="placeholder-state" id="placeholderState">
+          <div class="placeholder-graphic">
+            <div class="cow-silhouette">🐄</div>
+          </div>
+          <h3>Awaiting Video Stream</h3>
+          <p>Select an evaluation sample or upload cattle footage to trigger real-time spatiotemporal locomotion analysis.</p>
+        </div>
+
+        <!-- Loading / Analyzing State -->
+        <div class="loading-state" id="loadingState" style="display: none;">
+          <div class="radar-spinner">
+            <div class="radar-ring"></div>
+            <div class="radar-ring"></div>
+            <div class="radar-ring"></div>
+          </div>
+          <h3>Extracting Temporal Locomotion Dynamics...</h3>
+          <p>Uniformly sampling 16 frames across gait cycle &middot; ResNet-18 spatial embedding &middot; BiGRU temporal aggregation</p>
+          <div class="progress-bar-container">
+            <div class="progress-bar-fill"></div>
+          </div>
+        </div>
+
+        <!-- Result Content State -->
+        <div class="results-content" id="resultsContent" style="display: none;">
+          <!-- Top Status Banner -->
+          <div class="status-banner" id="statusBanner">
+            <div class="status-indicator-col">
+              <span class="status-label-small">AI SCREENING RESULT</span>
+              <div class="status-title" id="statusTitle">NORMAL</div>
+              <span class="status-badge" id="statusBadge">LOW RISK</span>
+            </div>
+            <div class="status-meta-col">
+              <div class="confidence-circle" id="confidenceCircle">
+                <span class="circle-val" id="confidenceVal">94%</span>
+                <span class="circle-label">CONFIDENCE</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Locomotion Risk Probability Meter -->
+          <div class="metric-panel">
+            <div class="metric-row-header">
+              <span>Estimated Lameness Risk Index:</span>
+              <span class="risk-prob-val" id="riskProbVal">0.082</span>
+            </div>
+            <div class="risk-meter-track">
+              <div class="risk-meter-fill" id="riskMeterFill" style="width: 8%;"></div>
+              <div class="risk-threshold normal-zone" title="Normal (< 0.35)"></div>
+              <div class="risk-threshold watch-zone" title="Watch (0.35 - 0.65)"></div>
+              <div class="risk-threshold check-zone" title="Check (>= 0.65)"></div>
+            </div>
+            <div class="meter-legend">
+              <span class="leg-item"><span class="dot green"></span> NORMAL (&lt;0.35)</span>
+              <span class="leg-item"><span class="dot amber"></span> WATCH (0.35-0.65)</span>
+              <span class="leg-item"><span class="dot red"></span> CHECK (&ge;0.65)</span>
+            </div>
+          </div>
+
+          <!-- Movement Explanation Card -->
+          <div class="explanation-box">
+            <div class="explanation-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+              </svg>
+              Movement Pattern Assessment
+            </div>
+            <p class="explanation-text" id="explanationText">
+              Locomotion shows regular cadence, symmetric limb placement, and absence of characteristic arched-back or head-bobbing anomalies.
+            </p>
+          </div>
+
+          <!-- Technical Model Metrics Grid -->
+          <div class="tech-metrics-grid">
+            <div class="tech-card">
+              <span class="t-label">TEMPORAL SAMPLING</span>
+              <span class="t-val">16 Frames (Uniform)</span>
+            </div>
+            <div class="tech-card">
+              <span class="t-label">CLASSIFIER</span>
+              <span class="t-val">ResNet18 + BiGRU</span>
+            </div>
+            <div class="tech-card">
+              <span class="t-label">INFERENCE TIME</span>
+              <span class="t-val" id="inferenceTime">18 ms</span>
+            </div>
+            <div class="tech-card">
+              <span class="t-label">NORMAL PROBABILITY</span>
+              <span class="t-val" id="normalProb">0.918</span>
+            </div>
+          </div>
+
+          <!-- Action Recommendation Card -->
+          <div class="action-card" id="actionCard">
+            <div class="action-badge" id="actionBadge">RECOMMENDED HERD ACTION</div>
+            <p id="actionText">No clinical hoof-trimming or separation required. Cow cleared for normal parlor rotation.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <p>GaitGuard AI &middot; Hackathon Prototype &middot; Architecture: Pretrained ResNet-18 Spatiotemporal BiGRU &middot; Designed for Non-Invasive Cattle Welfare</p>
+    </footer>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

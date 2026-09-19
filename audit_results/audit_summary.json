@@ -1,0 +1,59 @@
+{
+  "total_videos": 50,
+  "total_samples": 50,
+  "num_normal": 25,
+  "num_lame": 25,
+  "class_imbalance": "Balanced 50:50 (25 Normal, 25 Lame)",
+  "existing_splits": "No predefined train/val/test split directory structure in the dataset folder (all 25 per class reside in flat Lame/ and Normal/ folders). Original authors used custom Colab script splits.",
+  "file_formats": {
+    ".mp4": 50
+  },
+  "codecs": {
+    "h264": 50
+  },
+  "corrupted_files": [],
+  "exact_duplicates": {},
+  "near_duplicates": [],
+  "fps_stats": {
+    "unique_fps": [
+      29.97,
+      29.92,
+      60.0,
+      59.94,
+      30.0,
+      29.5,
+      25.0,
+      29.17,
+      29.58,
+      29.0,
+      28.7
+    ],
+    "mean": 36.09,
+    "min": 25.0,
+    "max": 60.0,
+    "std": 12.89
+  },
+  "duration_stats": {
+    "mean": 5.64,
+    "median": 5.22,
+    "min": 1.35,
+    "max": 12.28,
+    "std": 1.98,
+    "q25": 4.5,
+    "q75": 6.58
+  },
+  "frame_count_stats": {
+    "mean": 199.0,
+    "median": 159.0,
+    "min": 79,
+    "max": 479,
+    "std": 92.88,
+    "total_frames_all_videos": 9950
+  },
+  "resolutions": {
+    "500:500": 50
+  },
+  "resolution_details": {
+    "500x500": 50
+  }
+}

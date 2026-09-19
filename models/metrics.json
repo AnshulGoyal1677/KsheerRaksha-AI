@@ -1,0 +1,128 @@
+{
+  "model_architecture": "Pretrained ResNet-18 + Bi-directional GRU",
+  "training_time_seconds": 210.07,
+  "best_epoch": 13,
+  "validation_metrics": {
+    "loss": 0.5433,
+    "accuracy": 0.75,
+    "precision": 0.6667,
+    "recall": 1.0,
+    "f1": 0.8,
+    "confusion_matrix": [
+      [
+        2,
+        2
+      ],
+      [
+        0,
+        4
+      ]
+    ],
+    "predictions": [
+      1,
+      1,
+      1,
+      0,
+      0,
+      1,
+      1,
+      1
+    ],
+    "targets": [
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      1
+    ],
+    "probabilities": [
+      0.9666,
+      0.6745,
+      0.7584,
+      0.2636,
+      0.1893,
+      0.8439,
+      0.9122,
+      0.7838
+    ],
+    "filenames": [
+      "L (14).mp4",
+      "N (17).mp4",
+      "L (24).mp4",
+      "N (4).mp4",
+      "N (19).mp4",
+      "N (10).mp4",
+      "L (25).mp4",
+      "L (16).mp4"
+    ]
+  },
+  "test_metrics": {
+    "loss": 0.4456,
+    "accuracy": 0.75,
+    "precision": 0.6667,
+    "recall": 1.0,
+    "f1": 0.8,
+    "confusion_matrix": [
+      [
+        2,
+        2
+      ],
+      [
+        0,
+        4
+      ]
+    ],
+    "predictions": [
+      1,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+    ],
+    "targets": [
+      1,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "probabilities": [
+      0.7782,
+      0.7922,
+      0.8136,
+      0.9598,
+      0.0835,
+      0.5175,
+      0.1751,
+      0.9166
+    ],
+    "filenames": [
+      "L (22).mp4",
+      "L (4).mp4",
+      "N (9).mp4",
+      "L (19).mp4",
+      "N (24).mp4",
+      "N (6).mp4",
+      "N (2).mp4",
+      "L (15).mp4"
+    ],
+    "correct_count": 6,
+    "incorrect_count": 2,
+    "total_test_videos": 8,
+    "evaluation_note": "held-out test performance on our hackathon dataset",
+    "leakage_disclaimer": "No deterministic cow-level split can be guaranteed."
+  },
+  "class_mapping": {
+    "0": "NORMAL",
+    "1": "LAME"
+  }
+}

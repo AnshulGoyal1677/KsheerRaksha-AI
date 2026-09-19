@@ -1,0 +1,259 @@
+{
+  "seed": 42,
+  "train": [
+    {
+      "filename": "N (12).mp4",
+      "label": "NORMAL",
+      "path": "C:\\Users\\anshu\\Downloads\\CattleLameness-main\\CattleLameness-main\\Data\\Normal\\N (12).mp4"
+    },
+    {
+      "filename": "N (21).mp4",
+      "label": "NORMAL",
+      "path": "C:\\Users\\anshu\\Downloads\\CattleLameness-main\\CattleLameness-main\\Data\\Normal\\N (21).mp4"
+    },
+    {
+      "filename": "N (16).mp4",
+      "label": "NORMAL",
+      "path": "C:\\Users\\anshu\\Downloads\\CattleLameness-main\\CattleLameness-main\\Data\\Normal\\N (16).mp4"
+    },
+    {
+      "filename": "L (5).mp4",
+      "label": "LAME",
+      "path": "C:\\Users\\anshu\\Downloads\\CattleLameness-main\\CattleLameness-main\\Data\\Lame\\L (5).mp4"
+    },
+    {
+      "filename": "L (13).mp4",
+      "label": "LAME",
+      "path": "C:\\Users\\anshu\\Downloads\\CattleLameness-main\\CattleLameness-main\\Data\\Lame\\L (13).mp4"
+    },
+    {
+      "filename": "L (8).mp4",
+      "label": "LAME",
+      "path": "C:\\Users\\anshu\\Downloads\\CattleLameness-main\\CattleLameness-main\\Data\\Lame\\L (8).mp4"
+    },
+    {
+      "filename": "L (10).mp4",
+      "label": "LAME",
+      "path": "C:\\Users\\anshu\\Downloads\\CattleLameness-main\\CattleLameness-main\\Data\\Lame\\L (10).mp4"
+    },
+    {
+      "filename": "N (8).mp4",
+      "label": "NORMAL",
+      "path": "C:\\Users\\anshu\\Downloads\\CattleLameness-main\\CattleLameness-main\\Data\\Normal\\N (8).mp4"
+    },
+    {
+      "filename": "L (2).mp4",
+      "label": "LAME",
+      "path": "C:\\Users\\anshu\\Downloads\\CattleLameness-main\\CattleLameness-main\\Data\\Lame\\L (2).mp4"
+    },
+    {
+      "filename": "L (20).mp4",
+      "label": "LAME",
+      "path": "C:\\Users\\anshu\\Downloads\\CattleLameness-main\\CattleLameness-main\\Data\\Lame\\L (20).mp4"
+    },
+    {
+      "filename": "L (6).mp4",
+      "label": "LAME",
+      "path": "C:\\Users\\anshu\\Downloads\\CattleLameness-main\\CattleLameness-main\\Data\\Lame\\L (6).mp4"
+    },
+    {
+      "filename": "N (1).mp4",
+      "label": "NORMAL",
+      "path": "C:\\Users\\anshu\\Downloads\\CattleLameness-main\\CattleLameness-main\\Data\\Normal\\N (1).mp4"
+    },
+    {
+      "filename": "N (5).mp4",
+      "label": "NORMAL",
+      "path": "C:\\Users\\anshu\\Downloads\\CattleLameness-main\\CattleLameness-main\\Data\\Normal\\N (5).mp4"
+    },
+    {
+      "filename": "N (22).mp4",
+      "label": "NORMAL",
+      "path": "C:\\Users\\anshu\\Downloads\\CattleLameness-main\\CattleLameness-main\\Data\\Normal\\N (22).mp4"
+    },
+    {
+      "filename": "L (1).mp4",
+      "label": "LAME",
+      "path": "C:\\Users\\anshu\\Downloads\\CattleLameness-main\\CattleLameness-main\\Data\\Lame\\L (1).mp4"
+    },
+    {
+      "filename": "N (23).mp4",
+      "label": "NORMAL",
+      "path": "C:\\Users\\anshu\\Downloads\\CattleLameness-main\\CattleLameness-main\\Data\\Normal\\N (23).mp4"
+    },
+    {
+      "filename": "L (12).mp4",
+      "label": "LAME",
+      "path": "C:\\Users\\anshu\\Downloads\\CattleLameness-main\\CattleLameness-main\\Data\\Lame\\L (12).mp4"
+    },
+    {
+      "filename": "N (18).mp4",
+      "label": "NORMAL",
+      "path": "C:\\Users\\anshu\\Downloads\\CattleLameness-main\\CattleLameness-main\\Data\\Normal\\N (18).mp4"
+    },
+    {
+      "filename": "L (11).mp4",
+      "label": "LAME",
+      "path": "C:\\Users\\anshu\\Downloads\\CattleLameness-main\\CattleLameness-main\\Data\\Lame\\L (11).mp4"
+    },
+    {
+      "filename": "L (23).mp4",
+      "label": "LAME",
+      "path": "C:\\Users\\anshu\\Downloads\\CattleLameness-main\\CattleLameness-main\\Data\\Lame\\L (23).mp4"
+    },
+    {
+      "filename": "L (18).mp4",
+      "label": "LAME",
+      "path": "C:\\Users\\anshu\\Downloads\\CattleLameness-main\\CattleLameness-main\\Data\\Lame\\L (18).mp4"
+    },
+    {
+      "filename": "L (3).mp4",
+      "label": "LAME",
+      "path": "C:\\Users\\anshu\\Downloads\\CattleLameness-main\\CattleLameness-main\\Data\\Lame\\L (3).mp4"
+    },
+    {
+      "filename": "N (14).mp4",
+      "label": "NORMAL",
+      "path": "C:\\Users\\anshu\\Downloads\\CattleLameness-main\\CattleLameness-main\\Data\\Normal\\N (14).mp4"
+    },
+    {
+      "filename": "L (21).mp4",
+      "label": "LAME",
+      "path": "C:\\Users\\anshu\\Downloads\\CattleLameness-main\\CattleLameness-main\\Data\\Lame\\L (21).mp4"
+    },
+    {
+      "filename": "N (15).mp4",
+      "label": "NORMAL",
+      "path": "C:\\Users\\anshu\\Downloads\\CattleLameness-main\\CattleLameness-main\\Data\\Normal\\N (15).mp4"
+    },
+    {
+      "filename": "N (20).mp4",
+      "label": "NORMAL",
+      "path": "C:\\Users\\anshu\\Downloads\\CattleLameness-main\\CattleLameness-main\\Data\\Normal\\N (20).mp4"
+    },
+    {
+      "filename": "N (13).mp4",
+      "label": "NORMAL",
+      "path": "C:\\Users\\anshu\\Downloads\\CattleLameness-main\\CattleLameness-main\\Data\\Normal\\N (13).mp4"
+    },
+    {
+      "filename": "N (7).mp4",
+      "label": "NORMAL",
+      "path": "C:\\Users\\anshu\\Downloads\\CattleLameness-main\\CattleLameness-main\\Data\\Normal\\N (7).mp4"
+    },
+    {
+      "filename": "L (7).mp4",
+      "label": "LAME",
+      "path": "C:\\Users\\anshu\\Downloads\\CattleLameness-main\\CattleLameness-main\\Data\\Lame\\L (7).mp4"
+    },
+    {
+      "filename": "N (3).mp4",
+      "label": "NORMAL",
+      "path": "C:\\Users\\anshu\\Downloads\\CattleLameness-main\\CattleLameness-main\\Data\\Normal\\N (3).mp4"
+    },
+    {
+      "filename": "N (11).mp4",
+      "label": "NORMAL",
+      "path": "C:\\Users\\anshu\\Downloads\\CattleLameness-main\\CattleLameness-main\\Data\\Normal\\N (11).mp4"
+    },
+    {
+      "filename": "L (17).mp4",
+      "label": "LAME",
+      "path": "C:\\Users\\anshu\\Downloads\\CattleLameness-main\\CattleLameness-main\\Data\\Lame\\L (17).mp4"
+    },
+    {
+      "filename": "N (25).mp4",
+      "label": "NORMAL",
+      "path": "C:\\Users\\anshu\\Downloads\\CattleLameness-main\\CattleLameness-main\\Data\\Normal\\N (25).mp4"
+    },
+    {
+      "filename": "L (9).mp4",
+      "label": "LAME",
+      "path": "C:\\Users\\anshu\\Downloads\\CattleLameness-main\\CattleLameness-main\\Data\\Lame\\L (9).mp4"
+    }
+  ],
+  "val": [
+    {
+      "filename": "L (14).mp4",
+      "label": "LAME",
+      "path": "C:\\Users\\anshu\\Downloads\\CattleLameness-main\\CattleLameness-main\\Data\\Lame\\L (14).mp4"
+    },
+    {
+      "filename": "N (17).mp4",
+      "label": "NORMAL",
+      "path": "C:\\Users\\anshu\\Downloads\\CattleLameness-main\\CattleLameness-main\\Data\\Normal\\N (17).mp4"
+    },
+    {
+      "filename": "L (24).mp4",
+      "label": "LAME",
+      "path": "C:\\Users\\anshu\\Downloads\\CattleLameness-main\\CattleLameness-main\\Data\\Lame\\L (24).mp4"
+    },
+    {
+      "filename": "N (4).mp4",
+      "label": "NORMAL",
+      "path": "C:\\Users\\anshu\\Downloads\\CattleLameness-main\\CattleLameness-main\\Data\\Normal\\N (4).mp4"
+    },
+    {
+      "filename": "N (19).mp4",
+      "label": "NORMAL",
+      "path": "C:\\Users\\anshu\\Downloads\\CattleLameness-main\\CattleLameness-main\\Data\\Normal\\N (19).mp4"
+    },
+    {
+      "filename": "N (10).mp4",
+      "label": "NORMAL",
+      "path": "C:\\Users\\anshu\\Downloads\\CattleLameness-main\\CattleLameness-main\\Data\\Normal\\N (10).mp4"
+    },
+    {
+      "filename": "L (25).mp4",
+      "label": "LAME",
+      "path": "C:\\Users\\anshu\\Downloads\\CattleLameness-main\\CattleLameness-main\\Data\\Lame\\L (25).mp4"
+    },
+    {
+      "filename": "L (16).mp4",
+      "label": "LAME",
+      "path": "C:\\Users\\anshu\\Downloads\\CattleLameness-main\\CattleLameness-main\\Data\\Lame\\L (16).mp4"
+    }
+  ],
+  "test": [
+    {
+      "filename": "L (22).mp4",
+      "label": "LAME",
+      "path": "C:\\Users\\anshu\\Downloads\\CattleLameness-main\\CattleLameness-main\\Data\\Lame\\L (22).mp4"
+    },
+    {
+      "filename": "L (4).mp4",
+      "label": "LAME",
+      "path": "C:\\Users\\anshu\\Downloads\\CattleLameness-main\\CattleLameness-main\\Data\\Lame\\L (4).mp4"
+    },
+    {
+      "filename": "N (9).mp4",
+      "label": "NORMAL",
+      "path": "C:\\Users\\anshu\\Downloads\\CattleLameness-main\\CattleLameness-main\\Data\\Normal\\N (9).mp4"
+    },
+    {
+      "filename": "L (19).mp4",
+      "label": "LAME",
+      "path": "C:\\Users\\anshu\\Downloads\\CattleLameness-main\\CattleLameness-main\\Data\\Lame\\L (19).mp4"
+    },
+    {
+      "filename": "N (24).mp4",
+      "label": "NORMAL",
+      "path": "C:\\Users\\anshu\\Downloads\\CattleLameness-main\\CattleLameness-main\\Data\\Normal\\N (24).mp4"
+    },
+    {
+      "filename": "N (6).mp4",
+      "label": "NORMAL",
+      "path": "C:\\Users\\anshu\\Downloads\\CattleLameness-main\\CattleLameness-main\\Data\\Normal\\N (6).mp4"
+    },
+    {
+      "filename": "N (2).mp4",
+      "label": "NORMAL",
+      "path": "C:\\Users\\anshu\\Downloads\\CattleLameness-main\\CattleLameness-main\\Data\\Normal\\N (2).mp4"
+    },
+    {
+      "filename": "L (15).mp4",
+      "label": "LAME",
+      "path": "C:\\Users\\anshu\\Downloads\\CattleLameness-main\\CattleLameness-main\\Data\\Lame\\L (15).mp4"
+    }
+  ]
+}

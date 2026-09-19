@@ -1,0 +1,19 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Temporary downloads / wheels
+downloads/
+uploads/uploaded_cow.mp4
+
+# Environment / IDE
+.venv/
+env/
+venv/
+.idea/
+.vscode/
+
+# Large model weights (keep locally for inference, excluded from git)
+models/*.pth
+*.pth
