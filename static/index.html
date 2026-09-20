@@ -3,174 +3,340 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GaitGuard AI — Precision Cattle Lameness Screening</title>
+  <title>KsheerRaksha-AI — AI-Assisted Cattle Health Screening</title>
+  
+  <!-- Modern Typography: Outfit (Headings) + Plus Jakarta Sans (Body) + JetBrains Mono (Code/Metrics) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-  <div class="app-container">
-    <!-- Header -->
-    <header class="app-header">
-      <div class="brand">
-        <div class="brand-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+
+  <!-- Background Decorative Mesh / Ambient Gradients -->
+  <div class="ambient-glow glow-top-left"></div>
+  <div class="ambient-glow glow-bottom-right"></div>
+
+  <!-- Main Container -->
+  <div class="app-layout">
+
+    <!-- 1. Top Navbar -->
+    <header class="navbar">
+      <div class="nav-brand">
+        <div class="brand-logo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
           </svg>
         </div>
-        <div>
-          <h1>GaitGuard <span class="accent-text">AI</span></h1>
-          <p class="tagline">Automated Cattle Locomotion & Early Lameness Screening</p>
+        <div class="brand-text">
+          <span class="brand-title">KsheerRaksha<span class="brand-accent">-AI</span></span>
+          <span class="brand-subtitle">AI-Assisted Cattle Health Screening</span>
         </div>
       </div>
-      <div class="header-badges">
-        <span class="badge badge-pulse"><span class="pulse-dot"></span> Edge Model Active</span>
-        <span class="badge badge-outline">ResNet-18 + BiGRU</span>
-        <span class="badge badge-hardware">RTX 3050 (CUDA 12.6)</span>
-        <span class="badge badge-purple" title="Integrated Visual Udder Screening Model (MobileNetV3-Small)">MobileNetV3 (Visual Udder Model)</span>
+
+      <nav class="nav-links">
+        <a href="#heroSection" class="nav-link active">Dashboard</a>
+        <a href="#screeningCard" class="nav-link">Screening</a>
+        <a href="#trustSection" class="nav-link">About & Governance</a>
+      </nav>
+
+      <div class="nav-status">
+        <div class="status-indicator">
+          <span class="pulse-ring"></span>
+          <span class="pulse-core"></span>
+        </div>
+        <span class="status-text">AI SYSTEM ONLINE</span>
       </div>
     </header>
 
-    <!-- Ethical Disclaimer Alert Banner -->
-    <div class="alert-banner">
-      <div class="alert-icon">⚠️</div>
-      <div class="alert-content">
-        <strong>VETERINARY ADVISORY & CLASSIFICATION NOTICE:</strong>
-        This system generates an <em>AI screening result</em>, not a veterinary diagnosis. It is engineered for early herd management decision support to flag cows exhibiting locomotion anomalies before clinical impairment worsens.
+    <!-- 2. Hero Section -->
+    <section class="hero-section" id="heroSection">
+      <div class="hero-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="hero-badge-icon">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+        <span>AI-ASSISTED DUAL SCREENING</span>
       </div>
-    </div>
 
-    <!-- Main Grid -->
-    <main class="main-grid">
-      <!-- Left Column: Video Input & Playback -->
-      <section class="card input-card">
-        <div class="card-header">
-          <h2>1. Video Capture & Ingestion</h2>
-          <span class="card-step">Step 1 of 2</span>
+      <h1 class="hero-title">
+        Smarter Cattle <span class="gradient-text">Health Screening</span>.
+      </h1>
+
+      <p class="hero-subtitle">
+        One camera. One video. Two AI-powered screening signals.
+      </p>
+
+      <!-- Visual Flow Treatment: Camera -> Cow -> AI -> Health Insights -->
+      <div class="flow-diagram">
+        <div class="flow-step">
+          <div class="flow-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+              <circle cx="12" cy="13" r="4"/>
+            </svg>
+          </div>
+          <span class="flow-label">1. Single RGB Video</span>
         </div>
 
-        <!-- Preset Test Samples (Quick demo for judges) -->
-        <div class="preset-section">
-          <label class="section-label">Quick-Load Evaluation Samples (Held-Out Test Set):</label>
-          <div class="preset-buttons" id="presetContainer">
-            <!-- Populated via JS -->
-            <button class="preset-btn" data-sample="normal1">Loading samples...</button>
+        <div class="flow-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 18 15 12 9 6"/>
+          </svg>
+        </div>
+
+        <div class="flow-step">
+          <div class="flow-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 6v6l4 2"/>
+            </svg>
+          </div>
+          <span class="flow-label">2. Spatiotemporal Extraction</span>
+        </div>
+
+        <div class="flow-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 18 15 12 9 6"/>
+          </svg>
+        </div>
+
+        <div class="flow-step">
+          <div class="flow-icon flow-icon-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="4" y="4" width="16" height="16" rx="2" ry="2"/>
+              <rect x="9" y="9" width="6" height="6"/>
+              <line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/>
+              <line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/>
+              <line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/>
+              <line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/>
+            </svg>
+          </div>
+          <span class="flow-label">3. Dual Edge AI Models</span>
+        </div>
+
+        <div class="flow-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 18 15 12 9 6"/>
+          </svg>
+        </div>
+
+        <div class="flow-step">
+          <div class="flow-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+            </svg>
+          </div>
+          <span class="flow-label">4. Dual Screening Signals</span>
+        </div>
+      </div>
+
+      <div class="hero-cta-group">
+        <a href="#screeningCard" class="btn btn-hero" id="heroStartBtn">
+          <span>Start Screening</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-arrow">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+        <span class="hero-helper-text">Upload a cattle walking video to begin.</span>
+      </div>
+    </section>
+
+    <!-- 3. Screening Upload Card (Main Focal Point) -->
+    <main class="main-content">
+      <section class="card upload-card" id="screeningCard">
+        <div class="card-header-clean">
+          <div class="card-title-group">
+            <span class="card-step-badge">STEP 1</span>
+            <h2>Upload Cattle Video</h2>
+          </div>
+          <span class="card-hint">Single parlor or lateral passage feed</span>
+        </div>
+
+        <!-- Preset Evaluation Videos for Instant Demonstration -->
+        <div class="preset-container">
+          <div class="preset-header">
+            <span class="preset-title">Quick-Load Evaluation Samples (Held-Out Test Set):</span>
+          </div>
+          <div class="preset-chips" id="presetContainer">
+            <!-- Dynamically populated from /api/samples -->
+            <button class="preset-chip" type="button">Loading test samples...</button>
           </div>
         </div>
 
-        <div class="divider"><span>OR UPLOAD CUSTOM VIDEO</span></div>
+        <div class="or-divider">
+          <span>OR DROP CUSTOM FILE</span>
+        </div>
 
-        <!-- Dropzone -->
+        <!-- Drag & Drop Zone -->
         <div class="dropzone" id="dropzone">
           <input type="file" id="videoFileInput" accept="video/mp4,video/x-m4v,video/*" hidden>
-          <div class="dropzone-content">
-            <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
-            </svg>
-            <p class="drop-text">Drag & drop cattle walking video here</p>
-            <span class="drop-subtext">Supports MP4, AVI, MOV (500x500 square or parlor camera feeds)</span>
-            <button class="btn btn-outline" id="browseBtn" type="button">Browse Files</button>
+          
+          <div class="dropzone-body">
+            <div class="dropzone-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="dropzone-icon">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="17 8 12 3 7 8"></polyline>
+                <line x1="12" y1="3" x2="12" y2="15"></line>
+              </svg>
+            </div>
+            <p class="dropzone-heading">Drop your cattle video here or browse files</p>
+            <p class="dropzone-sub">MP4 recommended &middot; 500&times;500 square or parlor passage footage</p>
+            <button class="btn btn-outline" id="browseBtn" type="button">Browse Local Files</button>
           </div>
         </div>
 
-        <!-- Video Preview Container -->
-        <div class="video-preview-wrapper" id="videoPreviewWrapper" style="display: none;">
-          <div class="preview-header">
-            <span id="videoFilename">video_preview.mp4</span>
-            <span class="badge" id="videoDurationBadge">0.0s</span>
+        <!-- Video Selected / Preview State -->
+        <div class="video-preview-card" id="videoPreviewWrapper" style="display: none;">
+          <div class="preview-top-bar">
+            <div class="preview-file-info">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="preview-file-icon">
+                <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+              </svg>
+              <div class="file-text-meta">
+                <span class="preview-filename" id="videoFilename">cattle_passage.mp4</span>
+                <span class="preview-duration" id="videoDurationBadge">0.0s</span>
+              </div>
+            </div>
+            <button class="btn btn-ghost" id="changeVideoBtn" type="button">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-sm-icon">
+                <polyline points="1 4 1 10 7 10"></polyline>
+                <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+              </svg>
+              Change Video
+            </button>
           </div>
-          <div class="video-container">
+
+          <div class="video-player-frame">
             <video id="videoPlayer" controls playsinline></video>
-            <div class="scan-overlay" id="scanOverlay" style="display: none;">
-              <div class="scan-line"></div>
-              <div class="scan-badge">SPATIO-TEMPORAL EXTRACTION (T=16)</div>
+            <div class="video-scan-overlay" id="scanOverlay" style="display: none;">
+              <div class="scan-beam"></div>
+              <div class="scan-tag">EXTRACTING SPATIOTEMPORAL GAIT &amp; UDDER KEYFRAMES</div>
             </div>
           </div>
-          <button class="btn btn-primary" id="analyzeBtn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon">
-              <polygon points="5 3 19 12 5 21 5 3"></polygon>
-            </svg>
-            Analyze Cattle Gait & Locomotion
-          </button>
+
+          <div class="preview-actions">
+            <button class="btn btn-primary btn-cta" id="analyzeBtn" type="button">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" class="btn-icon">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+              <span>Run AI Health Screening</span>
+            </button>
+          </div>
         </div>
       </section>
 
-      <!-- Right Column: Screening Intelligence & Results -->
-      <section class="card results-card">
-        <div class="card-header">
-          <h2>2. GaitGuard Screening Intelligence</h2>
-          <span class="card-step">Step 2 of 2</span>
-        </div>
-
-        <!-- Initial Placeholder State -->
-        <div class="placeholder-state" id="placeholderState">
-          <div class="placeholder-graphic">
-            <div class="cow-silhouette">🐄</div>
-          </div>
-          <h3>Awaiting Video Stream</h3>
-          <p>Select an evaluation sample or upload cattle footage to trigger real-time spatiotemporal locomotion analysis.</p>
-        </div>
-
-        <!-- Loading / Analyzing State -->
-        <div class="loading-state" id="loadingState" style="display: none;">
-          <div class="radar-spinner">
-            <div class="radar-ring"></div>
-            <div class="radar-ring"></div>
-            <div class="radar-ring"></div>
-          </div>
-          <h3>Extracting Temporal Locomotion Dynamics...</h3>
-          <p>Uniformly sampling 16 frames across gait cycle &middot; ResNet-18 spatial embedding &middot; BiGRU temporal aggregation</p>
-          <div class="progress-bar-container">
-            <div class="progress-bar-fill"></div>
+      <!-- 4. Processing State -->
+      <section class="card processing-card" id="loadingState" style="display: none;">
+        <div class="processing-spinner-wrap">
+          <div class="pulse-ring-lg"></div>
+          <div class="spinner-ring"></div>
+          <div class="spinner-core">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="4" y="4" width="16" height="16" rx="2" ry="2"/>
+              <rect x="9" y="9" width="6" height="6"/>
+            </svg>
           </div>
         </div>
 
-        <!-- Result Content State -->
-        <div class="results-content" id="resultsContent" style="display: none;">
-          <!-- Dual-Stream Branch 1: Lameness -->
-          <div class="stream-section">
-            <div class="stream-section-header">
-              <span class="stream-section-badge badge-pulse"><span class="pulse-dot"></span> STREAM 1: LOCOMOTION & LAMENESS (ACTIVE MODEL)</span>
+        <h3 class="processing-title">ANALYZING CATTLE VIDEO</h3>
+        <p class="processing-subtitle">Processing single video through dual deep learning screening branches</p>
+
+        <!-- Dynamic Actual Stage Checklist -->
+        <div class="processing-steps">
+          <div class="p-step active">
+            <span class="p-step-dot"></span>
+            <span>Extracting frames &middot; Uniform gait cycle sampling (T=16)</span>
+          </div>
+          <div class="p-step active">
+            <span class="p-step-dot"></span>
+            <span>Running lameness analysis &middot; ResNet-18 spatial + BiGRU temporal</span>
+          </div>
+          <div class="p-step active">
+            <span class="p-step-dot"></span>
+            <span>Running visual udder screening &middot; MobileNetV3-Small keyframe evaluation</span>
+          </div>
+          <div class="p-step active">
+            <span class="p-step-dot"></span>
+            <span>Aggregating dual screening signals &middot; Spatiotemporal median pooling</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. Results Dashboard -->
+      <section class="results-dashboard" id="resultsContent" style="display: none;">
+        
+        <!-- Results Header Banner -->
+        <div class="results-header-banner">
+          <div>
+            <div class="res-tag">AI SCREENING COMPLETE</div>
+            <h2 class="res-heading">Screening Results</h2>
+          </div>
+          <div class="res-meta-chips">
+            <span class="meta-chip"><strong id="metaFilename">video.mp4</strong></span>
+            <span class="meta-chip">Total Latency: <strong id="metaLatency">-- ms</strong></span>
+            <span class="meta-chip">Device: <strong id="metaDevice">CUDA:0</strong></span>
+          </div>
+        </div>
+
+        <!-- TWO PRIMARY DUAL-BRANCH RESULT CARDS -->
+        <div class="dual-cards-grid">
+
+          <!-- ============================================== -->
+          <!-- CARD 1: LAMENESS SCREENING                     -->
+          <!-- ============================================== -->
+          <div class="card result-card" id="lamenessResultCard">
+            <div class="result-card-header">
+              <div class="branch-badge branch-badge-lameness">
+                <span class="dot-indicator"></span>
+                <span>STREAM 1: LOCOMOTION</span>
+              </div>
+              <span class="model-tag">ResNet-18 + BiGRU</span>
             </div>
 
-            <!-- Top Status Banner -->
-            <div class="status-banner" id="statusBanner">
-              <div class="status-indicator-col">
-                <span class="status-label-small">AI SCREENING RESULT</span>
-                <div class="status-title" id="statusTitle">NORMAL</div>
-                <span class="status-badge" id="statusBadge">LOW RISK</span>
+            <div class="branch-title-wrap">
+              <h3 class="branch-title">Lameness Screening</h3>
+              <p class="branch-subtitle">AI gait analysis across temporal locomotion frames</p>
+            </div>
+
+            <!-- Primary Status Display -->
+            <div class="status-box-large" id="lamenessStatusBox">
+              <div class="status-left">
+                <span class="status-caption">LOCOMOTION STATUS</span>
+                <div class="status-text-lg" id="statusTitle">NORMAL</div>
+                <span class="status-risk-pill" id="statusBadge">LOW RISK</span>
               </div>
-              <div class="status-meta-col">
-                <div class="confidence-circle" id="confidenceCircle">
-                  <span class="circle-val" id="confidenceVal">94%</span>
-                  <span class="circle-label">CONFIDENCE</span>
+              <div class="status-right">
+                <div class="gauge-circle" id="lamenessGauge">
+                  <span class="gauge-val" id="confidenceVal">--%</span>
+                  <span class="gauge-sub">CONFIDENCE</span>
                 </div>
               </div>
             </div>
 
-            <!-- Locomotion Risk Probability Meter -->
-            <div class="metric-panel">
-              <div class="metric-row-header">
-                <span>Estimated Lameness Risk Index:</span>
-                <span class="risk-prob-val" id="riskProbVal">0.082</span>
+            <!-- Probability Risk Meter -->
+            <div class="metric-meter-box">
+              <div class="meter-labels">
+                <span>Estimated Lameness Risk:</span>
+                <strong class="meter-val" id="riskProbVal">--</strong>
               </div>
-              <div class="risk-meter-track">
-                <div class="risk-meter-fill" id="riskMeterFill" style="width: 8%;"></div>
-                <div class="risk-threshold normal-zone" title="Normal (< 0.35)"></div>
-                <div class="risk-threshold watch-zone" title="Watch (0.35 - 0.65)"></div>
-                <div class="risk-threshold check-zone" title="Check (>= 0.65)"></div>
+              <div class="meter-track">
+                <div class="meter-fill" id="riskMeterFill" style="width: 0%;"></div>
+                <div class="threshold-line line-normal" title="Normal: < 0.35"></div>
+                <div class="threshold-line line-watch" title="Watch: 0.35 - 0.65"></div>
               </div>
-              <div class="meter-legend">
-                <span class="leg-item"><span class="dot green"></span> NORMAL (&lt;0.35)</span>
-                <span class="leg-item"><span class="dot amber"></span> WATCH (0.35-0.65)</span>
-                <span class="leg-item"><span class="dot red"></span> CHECK (&ge;0.65)</span>
+              <div class="meter-scale-legend">
+                <span class="scale-item scale-green">&lt;0.35 NORMAL</span>
+                <span class="scale-item scale-amber">0.35–0.65 WATCH</span>
+                <span class="scale-item scale-red">&ge;0.65 CHECK</span>
               </div>
             </div>
 
-            <!-- Movement Explanation Card -->
-            <div class="explanation-box">
-              <div class="explanation-title">
+            <!-- Movement Explanation Box -->
+            <div class="explanation-card">
+              <div class="exp-title">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <circle cx="12" cy="12" r="10"></circle>
                   <line x1="12" y1="16" x2="12" y2="12"></line>
@@ -178,119 +344,214 @@
                 </svg>
                 Movement Pattern Assessment
               </div>
-              <p class="explanation-text" id="explanationText">
-                Locomotion shows regular cadence, symmetric limb placement, and absence of characteristic arched-back or head-bobbing anomalies.
+              <p class="exp-body" id="explanationText">
+                Temporal gait patterns analyzed across sampled walking frames.
               </p>
             </div>
 
-            <!-- Technical Model Metrics Grid -->
-            <div class="tech-metrics-grid">
-              <div class="tech-card">
-                <span class="t-label">TEMPORAL SAMPLING</span>
-                <span class="t-val">16 Frames (Uniform)</span>
-              </div>
-              <div class="tech-card">
-                <span class="t-label">CLASSIFIER</span>
-                <span class="t-val">ResNet18 + BiGRU</span>
-              </div>
-              <div class="tech-card">
-                <span class="t-label">INFERENCE TIME</span>
-                <span class="t-val" id="inferenceTime">18 ms</span>
-              </div>
-              <div class="tech-card">
-                <span class="t-label">NORMAL PROBABILITY</span>
-                <span class="t-val" id="normalProb">0.918</span>
-              </div>
-            </div>
-
-            <!-- Action Recommendation Card -->
-            <div class="action-card" id="actionCard">
-              <div class="action-badge" id="actionBadge">RECOMMENDED HERD ACTION</div>
-              <p id="actionText">No clinical hoof-trimming or separation required. Cow cleared for normal parlor rotation.</p>
+            <!-- Action Advisory Pill -->
+            <div class="advisory-card" id="actionCard">
+              <div class="advisory-header" id="actionBadge">RECOMMENDED HERD ACTION</div>
+              <p class="advisory-text" id="actionText">No separation required. Cleared for standard parlor rotation.</p>
             </div>
           </div>
 
-          <!-- Dual-Stream Branch 2: Experimental Visual Udder Screening -->
-          <div class="stream-section udder-section">
-            <div class="stream-section-header">
-              <span class="stream-section-badge badge-planned">🔬 STREAM 2: EXPERIMENTAL VISUAL UDDER SCREENING</span>
-              <span class="badge badge-outline" id="udderProcessingTime">-- ms</span>
+          <!-- ============================================== -->
+          <!-- CARD 2: EXPERIMENTAL VISUAL UDDER SCREENING    -->
+          <!-- ============================================== -->
+          <div class="card result-card" id="udderResultCard">
+            <div class="result-card-header">
+              <div class="branch-badge branch-badge-udder">
+                <span class="dot-indicator dot-purple"></span>
+                <span>STREAM 2: VISUAL APPEARANCE</span>
+              </div>
+              <span class="badge-experimental">EXPERIMENTAL</span>
             </div>
 
-            <!-- Udder Status Banner -->
-            <div class="status-banner udder-status-banner" id="udderStatusBanner">
-              <div class="status-indicator-col">
-                <span class="status-label-small">VISUAL UDDER BENCHMARK</span>
-                <div class="status-title" id="udderStatusTitle">VISUALLY ABNORMAL</div>
-                <span class="status-badge" id="udderStatusBadge">HIGH VISUAL ANOMALY</span>
+            <div class="branch-title-wrap">
+              <h3 class="branch-title">Experimental Visual Udder Screening</h3>
+              <p class="branch-subtitle">Visual appearance screening on extracted keyframes</p>
+            </div>
+
+            <!-- Primary Status Display -->
+            <div class="status-box-large status-box-purple" id="udderStatusBox">
+              <div class="status-left">
+                <span class="status-caption">VISUAL SCREENING STATUS</span>
+                <div class="status-text-lg" id="udderStatusTitle">PENDING</div>
+                <span class="status-risk-pill" id="udderStatusBadge">AWAITING VIDEO</span>
               </div>
-              <div class="status-meta-col">
-                <div class="confidence-circle" id="udderConfidenceCircle">
-                  <span class="circle-val" id="udderConfidenceVal">--%</span>
-                  <span class="circle-label">CONFIDENCE</span>
+              <div class="status-right">
+                <div class="gauge-circle gauge-circle-purple" id="udderGauge">
+                  <span class="gauge-val" id="udderConfidenceVal">--%</span>
+                  <span class="gauge-sub">CONFIDENCE</span>
                 </div>
               </div>
             </div>
 
             <!-- Visual Abnormality Probability Meter -->
-            <div class="metric-panel">
-              <div class="metric-row-header">
-                <span>Visual Abnormality Probability (MobileNetV3):</span>
-                <span class="risk-prob-val" id="udderAbnormalProbVal">--</span>
+            <div class="metric-meter-box">
+              <div class="meter-labels">
+                <span>Visual Abnormality Probability:</span>
+                <strong class="meter-val" id="udderAbnormalProbVal">--</strong>
               </div>
-              <div class="risk-meter-track">
-                <div class="risk-meter-fill udder-meter-fill" id="udderMeterFill" style="width: 0%;"></div>
-                <div class="risk-threshold normal-zone" title="Normal (< 0.35)"></div>
-                <div class="risk-threshold watch-zone" title="Watch (0.35 - 0.65)"></div>
-                <div class="risk-threshold check-zone" title="Abnormal (>= 0.65)"></div>
+              <div class="meter-track">
+                <div class="meter-fill meter-fill-purple" id="udderMeterFill" style="width: 0%;"></div>
+                <div class="threshold-line line-normal"></div>
+                <div class="threshold-line line-watch"></div>
               </div>
-              <div class="meter-legend">
-                <span class="leg-item"><span class="dot green"></span> NORMAL (&lt;0.35)</span>
-                <span class="leg-item"><span class="dot amber"></span> INCONCLUSIVE (0.35-0.65)</span>
-                <span class="leg-item"><span class="dot purple"></span> ABNORMAL (&ge;0.65)</span>
-              </div>
-            </div>
-
-            <div class="udder-notice-box">
-              <div class="notice-icon">ℹ️</div>
-              <div class="notice-content">
-                <strong>Non-Diagnostic Visual Screening:</strong>
-                <span id="udderExplanationText">Visual screening benchmark on extracted keyframes. Somatic Cell Count (SCC) ground-truth is required for clinical veterinary diagnosis.</span>
+              <div class="meter-scale-legend">
+                <span class="scale-item scale-green">&lt;0.35 NORMAL</span>
+                <span class="scale-item scale-amber">0.35–0.65 INCONCLUSIVE</span>
+                <span class="scale-item scale-purple">&ge;0.65 ABNORMAL</span>
               </div>
             </div>
 
-            <div class="udder-metrics-grid">
-              <div class="u-metric-card">
-                <span class="u-label">FRAMES ANALYZED</span>
-                <span class="u-val" id="udderUsableFrames">--</span>
+            <!-- Optical Indicators & Frame Telemetry Grid -->
+            <div class="telemetry-compact-grid">
+              <div class="t-cell">
+                <span class="t-cell-label">USABLE FRAMES</span>
+                <strong class="t-cell-val" id="udderUsableFrames">--</strong>
               </div>
-              <div class="u-metric-card">
-                <span class="u-label">ERYTHEMA INDEX</span>
-                <span class="u-val" id="udderErythema">--</span>
+              <div class="t-cell">
+                <span class="t-cell-label">ERYTHEMA INDEX</span>
+                <strong class="t-cell-val" id="udderErythema">--</strong>
               </div>
-              <div class="u-metric-card">
-                <span class="u-label">BILATERAL ASYMMETRY</span>
-                <span class="u-val" id="udderAsymmetry">--</span>
+              <div class="t-cell">
+                <span class="t-cell-label">ASYMMETRY</span>
+                <strong class="t-cell-val" id="udderAsymmetry">--</strong>
               </div>
-              <div class="u-metric-card">
-                <span class="u-label">TEXTURE ROUGHNESS</span>
-                <span class="u-val" id="udderRoughness">--</span>
+              <div class="t-cell">
+                <span class="t-cell-label">ROUGHNESS</span>
+                <strong class="t-cell-val" id="udderRoughness">--</strong>
               </div>
             </div>
 
-            <div class="udder-status-footer">
-              <span class="u-footer-item" id="udderModelInfo">Model: MobileNetV3-Small &middot; Normal vs Visually Abnormal</span>
-              <span class="u-footer-tag" id="udderDisclaimer">Visual screening benchmark; not a clinical mastitis diagnosis.</span>
+            <!-- Explanation / Fallback Notice -->
+            <div class="explanation-card">
+              <div class="exp-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" y1="16" x2="12" y2="12"></line>
+                  <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                </svg>
+                Visual Analysis Summary
+              </div>
+              <p class="exp-body" id="udderExplanationText">
+                Visual appearance evaluated across candidate frames.
+              </p>
+            </div>
+
+            <!-- Permanent Mandatory Non-Diagnostic Disclaimer -->
+            <div class="permanent-disclaimer-card">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="disclaimer-shield-icon">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+              <span>Visual screening benchmark &mdash; not a clinical mastitis diagnosis.</span>
             </div>
           </div>
         </div>
+
+        <!-- 6. Overall Summary Strip -->
+        <div class="card summary-strip">
+          <div class="summary-title-wrap">
+            <span class="summary-label">OVERALL SCREENING SIGNALS</span>
+            <h4>Screening Summary</h4>
+          </div>
+          <div class="summary-chips-wrap">
+            <div class="summary-chip" id="summaryLamenessChip">
+              <span class="chip-dot"></span>
+              <span>Lameness: <strong id="sumLamenessStatus">NORMAL</strong></span>
+            </div>
+            <div class="summary-chip" id="summaryUdderChip">
+              <span class="chip-dot dot-purple"></span>
+              <span>Visual Udder: <strong id="sumUdderStatus">VISUALLY ABNORMAL</strong></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. Expandable Analysis Details Card -->
+        <details class="card details-accordion">
+          <summary class="details-summary">
+            <div class="details-summary-content">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="details-icon">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+              <span>Technical Analysis &amp; Architecture Details</span>
+            </div>
+            <span class="details-toggle-hint">Click to inspect</span>
+          </summary>
+
+          <div class="details-body">
+            <div class="details-grid">
+              <div class="d-item">
+                <span class="d-label">Lameness Pipeline</span>
+                <span class="d-val">ImageNet ResNet-18 + Bi-directional GRU</span>
+              </div>
+              <div class="d-item">
+                <span class="d-label">Udder Pipeline</span>
+                <span class="d-val">MobileNetV3-Small (Normal vs Visually Abnormal)</span>
+              </div>
+              <div class="d-item">
+                <span class="d-label">Temporal Aggregation</span>
+                <span class="d-val">70% Median + 30% 75th-Percentile Pooling</span>
+              </div>
+              <div class="d-item">
+                <span class="d-label">Quality Filter</span>
+                <span class="d-val">Laplacian Blur Variance (&ge; 35.0)</span>
+              </div>
+              <div class="d-item">
+                <span class="d-label">Locomotion Inference Time</span>
+                <span class="d-val" id="detLamenessTime">-- ms</span>
+              </div>
+              <div class="d-item">
+                <span class="d-label">Udder Inference Time</span>
+                <span class="d-val" id="detUdderTime">-- ms</span>
+              </div>
+            </div>
+          </div>
+        </details>
+
       </section>
     </main>
 
-    <!-- Footer -->
+    <!-- 8. Trust & Veterinary Disclaimer Section -->
+    <section class="trust-section" id="trustSection">
+      <div class="card trust-card">
+        <div class="trust-header">
+          <div class="trust-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <div>
+            <h3>Designed for screening, not diagnosis.</h3>
+            <p class="trust-subtitle">Veterinary Decision Support &amp; Ethical AI Governance</p>
+          </div>
+        </div>
+
+        <div class="trust-body">
+          <p>
+            KsheerRaksha-AI is an AI-assisted screening prototype. Results should support herd observation and veterinary decision-making rather than replace professional veterinary assessment.
+          </p>
+          <div class="trust-callout">
+            <strong>Visual Udder Screening Notice:</strong>
+            <span>Visual Udder Screening is an experimental benchmark and is not a clinical mastitis diagnosis. Confirmation requires Somatic Cell Count (SCC) or veterinary clinical diagnostics.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. Footer -->
     <footer class="app-footer">
-      <p>GaitGuard AI &middot; Hackathon Prototype &middot; Architecture: Pretrained ResNet-18 Spatiotemporal BiGRU &middot; Designed for Non-Invasive Cattle Welfare</p>
+      <div class="footer-top">
+        <span class="footer-brand">KsheerRaksha-AI</span>
+        <span class="footer-tagline">AI-Assisted Cattle Health Screening</span>
+      </div>
+      <div class="footer-bottom">
+        <p>Prototype &middot; Computer Vision &middot; Dual-Branch Deep Learning</p>
+      </div>
     </footer>
+
   </div>
 
   <script src="/static/app.js"></script>
