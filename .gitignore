@@ -17,3 +17,8 @@ venv/
 # Large model weights (keep locally for inference, excluded from git)
 models/*.pth
 *.pth
+
+# Datasets and raw media (keep locally, excluded from git)
+data/
+downloads/
+uploads/uploaded_cow.mp4

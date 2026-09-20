@@ -28,7 +28,7 @@
         <span class="badge badge-pulse"><span class="pulse-dot"></span> Edge Model Active</span>
         <span class="badge badge-outline">ResNet-18 + BiGRU</span>
         <span class="badge badge-hardware">RTX 3050 (CUDA 12.6)</span>
-        <span class="badge badge-planned" title="Modular architectural extension planned for future validated udder datasets">Mastitis module — planned</span>
+        <span class="badge badge-purple" title="Integrated Visual Udder Screening Model (MobileNetV3-Small)">MobileNetV3 (Visual Udder Model)</span>
       </div>
     </header>
 
@@ -128,79 +128,160 @@
 
         <!-- Result Content State -->
         <div class="results-content" id="resultsContent" style="display: none;">
-          <!-- Top Status Banner -->
-          <div class="status-banner" id="statusBanner">
-            <div class="status-indicator-col">
-              <span class="status-label-small">AI SCREENING RESULT</span>
-              <div class="status-title" id="statusTitle">NORMAL</div>
-              <span class="status-badge" id="statusBadge">LOW RISK</span>
+          <!-- Dual-Stream Branch 1: Lameness -->
+          <div class="stream-section">
+            <div class="stream-section-header">
+              <span class="stream-section-badge badge-pulse"><span class="pulse-dot"></span> STREAM 1: LOCOMOTION & LAMENESS (ACTIVE MODEL)</span>
             </div>
-            <div class="status-meta-col">
-              <div class="confidence-circle" id="confidenceCircle">
-                <span class="circle-val" id="confidenceVal">94%</span>
-                <span class="circle-label">CONFIDENCE</span>
+
+            <!-- Top Status Banner -->
+            <div class="status-banner" id="statusBanner">
+              <div class="status-indicator-col">
+                <span class="status-label-small">AI SCREENING RESULT</span>
+                <div class="status-title" id="statusTitle">NORMAL</div>
+                <span class="status-badge" id="statusBadge">LOW RISK</span>
+              </div>
+              <div class="status-meta-col">
+                <div class="confidence-circle" id="confidenceCircle">
+                  <span class="circle-val" id="confidenceVal">94%</span>
+                  <span class="circle-label">CONFIDENCE</span>
+                </div>
               </div>
             </div>
+
+            <!-- Locomotion Risk Probability Meter -->
+            <div class="metric-panel">
+              <div class="metric-row-header">
+                <span>Estimated Lameness Risk Index:</span>
+                <span class="risk-prob-val" id="riskProbVal">0.082</span>
+              </div>
+              <div class="risk-meter-track">
+                <div class="risk-meter-fill" id="riskMeterFill" style="width: 8%;"></div>
+                <div class="risk-threshold normal-zone" title="Normal (< 0.35)"></div>
+                <div class="risk-threshold watch-zone" title="Watch (0.35 - 0.65)"></div>
+                <div class="risk-threshold check-zone" title="Check (>= 0.65)"></div>
+              </div>
+              <div class="meter-legend">
+                <span class="leg-item"><span class="dot green"></span> NORMAL (&lt;0.35)</span>
+                <span class="leg-item"><span class="dot amber"></span> WATCH (0.35-0.65)</span>
+                <span class="leg-item"><span class="dot red"></span> CHECK (&ge;0.65)</span>
+              </div>
+            </div>
+
+            <!-- Movement Explanation Card -->
+            <div class="explanation-box">
+              <div class="explanation-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" y1="16" x2="12" y2="12"></line>
+                  <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                </svg>
+                Movement Pattern Assessment
+              </div>
+              <p class="explanation-text" id="explanationText">
+                Locomotion shows regular cadence, symmetric limb placement, and absence of characteristic arched-back or head-bobbing anomalies.
+              </p>
+            </div>
+
+            <!-- Technical Model Metrics Grid -->
+            <div class="tech-metrics-grid">
+              <div class="tech-card">
+                <span class="t-label">TEMPORAL SAMPLING</span>
+                <span class="t-val">16 Frames (Uniform)</span>
+              </div>
+              <div class="tech-card">
+                <span class="t-label">CLASSIFIER</span>
+                <span class="t-val">ResNet18 + BiGRU</span>
+              </div>
+              <div class="tech-card">
+                <span class="t-label">INFERENCE TIME</span>
+                <span class="t-val" id="inferenceTime">18 ms</span>
+              </div>
+              <div class="tech-card">
+                <span class="t-label">NORMAL PROBABILITY</span>
+                <span class="t-val" id="normalProb">0.918</span>
+              </div>
+            </div>
+
+            <!-- Action Recommendation Card -->
+            <div class="action-card" id="actionCard">
+              <div class="action-badge" id="actionBadge">RECOMMENDED HERD ACTION</div>
+              <p id="actionText">No clinical hoof-trimming or separation required. Cow cleared for normal parlor rotation.</p>
+            </div>
           </div>
 
-          <!-- Locomotion Risk Probability Meter -->
-          <div class="metric-panel">
-            <div class="metric-row-header">
-              <span>Estimated Lameness Risk Index:</span>
-              <span class="risk-prob-val" id="riskProbVal">0.082</span>
+          <!-- Dual-Stream Branch 2: Experimental Visual Udder Screening -->
+          <div class="stream-section udder-section">
+            <div class="stream-section-header">
+              <span class="stream-section-badge badge-planned">🔬 STREAM 2: EXPERIMENTAL VISUAL UDDER SCREENING</span>
+              <span class="badge badge-outline" id="udderProcessingTime">-- ms</span>
             </div>
-            <div class="risk-meter-track">
-              <div class="risk-meter-fill" id="riskMeterFill" style="width: 8%;"></div>
-              <div class="risk-threshold normal-zone" title="Normal (< 0.35)"></div>
-              <div class="risk-threshold watch-zone" title="Watch (0.35 - 0.65)"></div>
-              <div class="risk-threshold check-zone" title="Check (>= 0.65)"></div>
-            </div>
-            <div class="meter-legend">
-              <span class="leg-item"><span class="dot green"></span> NORMAL (&lt;0.35)</span>
-              <span class="leg-item"><span class="dot amber"></span> WATCH (0.35-0.65)</span>
-              <span class="leg-item"><span class="dot red"></span> CHECK (&ge;0.65)</span>
-            </div>
-          </div>
 
-          <!-- Movement Explanation Card -->
-          <div class="explanation-box">
-            <div class="explanation-title">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="12" y1="16" x2="12" y2="12"></line>
-                <line x1="12" y1="8" x2="12.01" y2="8"></line>
-              </svg>
-              Movement Pattern Assessment
+            <!-- Udder Status Banner -->
+            <div class="status-banner udder-status-banner" id="udderStatusBanner">
+              <div class="status-indicator-col">
+                <span class="status-label-small">VISUAL UDDER BENCHMARK</span>
+                <div class="status-title" id="udderStatusTitle">VISUALLY ABNORMAL</div>
+                <span class="status-badge" id="udderStatusBadge">HIGH VISUAL ANOMALY</span>
+              </div>
+              <div class="status-meta-col">
+                <div class="confidence-circle" id="udderConfidenceCircle">
+                  <span class="circle-val" id="udderConfidenceVal">--%</span>
+                  <span class="circle-label">CONFIDENCE</span>
+                </div>
+              </div>
             </div>
-            <p class="explanation-text" id="explanationText">
-              Locomotion shows regular cadence, symmetric limb placement, and absence of characteristic arched-back or head-bobbing anomalies.
-            </p>
-          </div>
 
-          <!-- Technical Model Metrics Grid -->
-          <div class="tech-metrics-grid">
-            <div class="tech-card">
-              <span class="t-label">TEMPORAL SAMPLING</span>
-              <span class="t-val">16 Frames (Uniform)</span>
+            <!-- Visual Abnormality Probability Meter -->
+            <div class="metric-panel">
+              <div class="metric-row-header">
+                <span>Visual Abnormality Probability (MobileNetV3):</span>
+                <span class="risk-prob-val" id="udderAbnormalProbVal">--</span>
+              </div>
+              <div class="risk-meter-track">
+                <div class="risk-meter-fill udder-meter-fill" id="udderMeterFill" style="width: 0%;"></div>
+                <div class="risk-threshold normal-zone" title="Normal (< 0.35)"></div>
+                <div class="risk-threshold watch-zone" title="Watch (0.35 - 0.65)"></div>
+                <div class="risk-threshold check-zone" title="Abnormal (>= 0.65)"></div>
+              </div>
+              <div class="meter-legend">
+                <span class="leg-item"><span class="dot green"></span> NORMAL (&lt;0.35)</span>
+                <span class="leg-item"><span class="dot amber"></span> INCONCLUSIVE (0.35-0.65)</span>
+                <span class="leg-item"><span class="dot purple"></span> ABNORMAL (&ge;0.65)</span>
+              </div>
             </div>
-            <div class="tech-card">
-              <span class="t-label">CLASSIFIER</span>
-              <span class="t-val">ResNet18 + BiGRU</span>
-            </div>
-            <div class="tech-card">
-              <span class="t-label">INFERENCE TIME</span>
-              <span class="t-val" id="inferenceTime">18 ms</span>
-            </div>
-            <div class="tech-card">
-              <span class="t-label">NORMAL PROBABILITY</span>
-              <span class="t-val" id="normalProb">0.918</span>
-            </div>
-          </div>
 
-          <!-- Action Recommendation Card -->
-          <div class="action-card" id="actionCard">
-            <div class="action-badge" id="actionBadge">RECOMMENDED HERD ACTION</div>
-            <p id="actionText">No clinical hoof-trimming or separation required. Cow cleared for normal parlor rotation.</p>
+            <div class="udder-notice-box">
+              <div class="notice-icon">ℹ️</div>
+              <div class="notice-content">
+                <strong>Non-Diagnostic Visual Screening:</strong>
+                <span id="udderExplanationText">Visual screening benchmark on extracted keyframes. Somatic Cell Count (SCC) ground-truth is required for clinical veterinary diagnosis.</span>
+              </div>
+            </div>
+
+            <div class="udder-metrics-grid">
+              <div class="u-metric-card">
+                <span class="u-label">FRAMES ANALYZED</span>
+                <span class="u-val" id="udderUsableFrames">--</span>
+              </div>
+              <div class="u-metric-card">
+                <span class="u-label">ERYTHEMA INDEX</span>
+                <span class="u-val" id="udderErythema">--</span>
+              </div>
+              <div class="u-metric-card">
+                <span class="u-label">BILATERAL ASYMMETRY</span>
+                <span class="u-val" id="udderAsymmetry">--</span>
+              </div>
+              <div class="u-metric-card">
+                <span class="u-label">TEXTURE ROUGHNESS</span>
+                <span class="u-val" id="udderRoughness">--</span>
+              </div>
+            </div>
+
+            <div class="udder-status-footer">
+              <span class="u-footer-item" id="udderModelInfo">Model: MobileNetV3-Small &middot; Normal vs Visually Abnormal</span>
+              <span class="u-footer-tag" id="udderDisclaimer">Visual screening benchmark; not a clinical mastitis diagnosis.</span>
+            </div>
           </div>
         </div>
       </section>

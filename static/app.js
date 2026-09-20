@@ -22,9 +22,22 @@ document.addEventListener('DOMContentLoaded', () => {
   const riskMeterFill = document.getElementById('riskMeterFill');
   const explanationText = document.getElementById('explanationText');
   const inferenceTime = document.getElementById('inferenceTime');
-  const normalProb = document.getElementById('normalProb');
   const actionCard = document.getElementById('actionCard');
   const actionText = document.getElementById('actionText');
+
+  // Udder Stream Elements
+  const udderProcessingTime = document.getElementById('udderProcessingTime');
+  const udderStatusBanner = document.getElementById('udderStatusBanner');
+  const udderStatusTitle = document.getElementById('udderStatusTitle');
+  const udderStatusBadge = document.getElementById('udderStatusBadge');
+  const udderConfidenceVal = document.getElementById('udderConfidenceVal');
+  const udderAbnormalProbVal = document.getElementById('udderAbnormalProbVal');
+  const udderMeterFill = document.getElementById('udderMeterFill');
+  const udderExplanationText = document.getElementById('udderExplanationText');
+  const udderUsableFrames = document.getElementById('udderUsableFrames');
+  const udderErythema = document.getElementById('udderErythema');
+  const udderAsymmetry = document.getElementById('udderAsymmetry');
+  const udderRoughness = document.getElementById('udderRoughness');
 
   let currentVideoFile = null;
   let currentSamplePath = null;
@@ -200,5 +213,66 @@ document.addEventListener('DOMContentLoaded', () => {
     explanationText.textContent = data.explanation;
     inferenceTime.textContent = `${elapsedMs} ms`;
     normalProb.textContent = data.normal_probability.toFixed(3);
+
+    // Render Stream 2: Visual Udder Screening
+    const udderData = data.visual_udder_screening || data.udder_visual || data.visual_udder_analysis;
+    if (udderData && udderData.status !== 'INSUFFICIENT_VISUAL_DATA' && udderData.abnormal_probability !== null && udderData.abnormal_probability !== undefined) {
+      udderProcessingTime.textContent = `${udderData.processing_time_ms || '--'} ms`;
+      udderStatusTitle.textContent = udderData.class === 'NORMAL' ? 'NORMAL' : (udderData.class === 'VISUALLY_ABNORMAL' ? 'VISUALLY ABNORMAL' : 'INCONCLUSIVE');
+      
+      udderStatusBanner.className = 'status-banner udder-status-banner';
+      if (udderData.class === 'VISUALLY_ABNORMAL') {
+        udderStatusBanner.classList.add('status-abnormal');
+        udderStatusBadge.textContent = 'HIGH VISUAL ANOMALY';
+        udderStatusBadge.style.color = '#c084fc';
+      } else if (udderData.class === 'NORMAL') {
+        udderStatusBadge.textContent = 'LOW RISK (CLEAR)';
+        udderStatusBadge.style.color = '#34d399';
+      } else {
+        udderStatusBanner.classList.add('status-inconclusive');
+        udderStatusBadge.textContent = 'MODERATE ANOMALY (WATCH)';
+        udderStatusBadge.style.color = '#fbbf24';
+      }
+      
+      const abnProb = udderData.abnormal_probability;
+      udderAbnormalProbVal.textContent = abnProb.toFixed(3);
+      const fillPct = Math.min(Math.max(abnProb * 100, 4), 100);
+      udderMeterFill.style.width = `${fillPct}%`;
+      
+      udderConfidenceVal.textContent = `${Math.round(udderData.confidence_percentage || (Math.max(abnProb, 1-abnProb)*100))}%`;
+      udderExplanationText.textContent = udderData.explanation || 'Visual screening completed across extracted candidate frames.';
+      udderUsableFrames.textContent = `${udderData.frames_analyzed || 0} frames`;
+      
+      const opt = udderData.optical_indicators || {};
+      udderErythema.textContent = (opt.mean_erythema_index !== undefined) ? opt.mean_erythema_index.toFixed(3) : '--';
+      udderAsymmetry.textContent = (opt.mean_asymmetry_index !== undefined) ? opt.mean_asymmetry_index.toFixed(3) : '--';
+      udderRoughness.textContent = (opt.mean_texture_roughness !== undefined) ? opt.mean_texture_roughness.toFixed(3) : '--';
+    } else if (udderData && udderData.status === 'INSUFFICIENT_VISUAL_DATA') {
+      udderProcessingTime.textContent = `${udderData.processing_time_ms || '--'} ms`;
+      udderStatusBanner.className = 'status-banner udder-status-banner';
+      udderStatusTitle.textContent = 'INSUFFICIENT DATA';
+      udderStatusBadge.textContent = 'NO CLEAR UDDER FRAMES';
+      udderStatusBadge.style.color = '#94a3b8';
+      udderAbnormalProbVal.textContent = 'N/A';
+      udderMeterFill.style.width = '0%';
+      udderConfidenceVal.textContent = '--%';
+      udderExplanationText.textContent = udderData.message || 'No unoccluded udder keyframes met optical clarity thresholds.';
+      udderUsableFrames.textContent = '0 frames';
+      udderErythema.textContent = '--';
+      udderAsymmetry.textContent = '--';
+      udderRoughness.textContent = '--';
+    } else {
+      udderProcessingTime.textContent = '-- ms';
+      udderStatusBanner.className = 'status-banner udder-status-banner';
+      udderStatusTitle.textContent = 'PENDING ANALYSIS';
+      udderStatusBadge.textContent = 'AWAITING VIDEO';
+      udderAbnormalProbVal.textContent = '--';
+      udderMeterFill.style.width = '0%';
+      udderConfidenceVal.textContent = '--%';
+      udderUsableFrames.textContent = '--';
+      udderErythema.textContent = '--';
+      udderAsymmetry.textContent = '--';
+      udderRoughness.textContent = '--';
+    }
   }
 });

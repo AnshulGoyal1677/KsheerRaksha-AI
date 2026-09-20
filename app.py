@@ -6,25 +6,40 @@ import shutil
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 import urllib.parse
 from inference import screen_cow_video, load_gaitguard_model
+from src.mastitis_pipeline import screen_cow_udder_video, load_visual_udder_model
 
 PORT = 8000
 UPLOAD_DIR = "uploads"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 
-# Preload model globally for instant inference
+# Preload models globally for instant inference
 g_model = None
 g_device = None
 g_config = None
+
+g_udder_model = None
+g_udder_device = None
+g_udder_config = None
 
 def get_model():
     global g_model, g_device, g_config
     if g_model is None and os.path.exists("models/best_model.pth"):
         try:
             g_model, g_device, g_config = load_gaitguard_model()
-            print("GaitGuard model loaded successfully into memory.")
+            print("GaitGuard lameness model loaded successfully into memory.")
         except Exception as e:
-            print("Model load warning:", e)
+            print("Lameness model load warning:", e)
     return g_model, g_device, g_config
+
+def get_udder_model():
+    global g_udder_model, g_udder_device, g_udder_config
+    if g_udder_model is None and os.path.exists("models/visual_udder_model.pth"):
+        try:
+            g_udder_model, g_udder_device, g_udder_config = load_visual_udder_model()
+            print("Visual Udder Screening model (MobileNetV3-Small) loaded successfully into memory.")
+        except Exception as e:
+            print("Visual udder model load warning:", e)
+    return g_udder_model, g_udder_device, g_udder_config
 
 class GaitGuardHandler(SimpleHTTPRequestHandler):
     def do_GET(self):
@@ -138,12 +153,38 @@ class GaitGuardHandler(SimpleHTTPRequestHandler):
                 return
                 
             model, device, config = get_model()
+            udder_model, udder_device, udder_config = get_udder_model()
             try:
-                result = screen_cow_video(video_path, model=model, device=device)
+                # 1. Primary Lameness Pipeline (ResNet-18 + BiGRU)
+                lameness_res = screen_cow_video(video_path, model=model, device=device)
+                
+                # 2. Parallel Visual Udder Screening Model (MobileNetV3-Small)
+                udder_res = screen_cow_udder_video(video_path)
+                
+                # Dual-Branch Structured Response
+                combined_response = {
+                    "lameness": {
+                        "prediction": lameness_res.get("prediction"),
+                        "lameness_probability": lameness_res.get("lameness_probability"),
+                        "normal_probability": lameness_res.get("normal_probability"),
+                        "status": lameness_res.get("status"),
+                        "risk_level": lameness_res.get("risk_level"),
+                        "confidence_percentage": lameness_res.get("confidence_percentage"),
+                        "explanation": lameness_res.get("explanation"),
+                        "inference_time_ms": lameness_res.get("inference_time_ms")
+                    },
+                    "visual_udder_screening": udder_res,
+                    "udder_visual": udder_res,
+                    
+                    # Backward-compatible root-level fields
+                    **lameness_res,
+                    "visual_udder_analysis": udder_res
+                }
+                
                 self.send_response(200)
                 self.send_header("Content-type", "application/json")
                 self.end_headers()
-                self.wfile.write(json.dumps(result).encode("utf-8"))
+                self.wfile.write(json.dumps(combined_response).encode("utf-8"))
             except Exception as e:
                 self.send_response(500)
                 self.send_header("Content-type", "application/json")
